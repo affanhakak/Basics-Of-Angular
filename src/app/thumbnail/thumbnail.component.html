@@ -1,0 +1,32 @@
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page">Peaky Blinders Restaurant</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link">Menu</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link">About us</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link">Contact</a>
+  </li>
+  <a
+    [routerLink]="['/meals']"
+    id="order"
+    class="btn btn-outline-success d-flex justify-content-end"
+    >ORDER NOW</a
+  >
+</ul>
+<div class="bg-container"></div>
+
+<div id="center" class="d-grid gap-2 col-6 mx-auto">
+  <h1>CUISINES</h1>
+  <p>
+    Welcome to Cuisines by the famous Peaky Blinders.<br />
+    Create your own menus by clicking the button below.
+  </p>
+  <button [routerLink]="['/menus']" class="btn btn-primary" type="button">
+    Create New
+  </button>
+</div>

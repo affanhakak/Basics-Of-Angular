@@ -1,0 +1,107 @@
+<div style="display: flex; justify-content: space-between">
+  <h2>Create your menu</h2>
+  <div class="btn">
+    <button (click)="onCreate()" class="btn btn-primary">Create</button>
+  </div>
+</div>
+
+<form #restaurantForm="ngForm">
+  <div class="form-group">
+    <label>Name</label>
+    <input
+      class="form-control"
+      [(ngModel)]="restaurant.name"
+      required
+      name="name"
+      type="text"
+    />
+  </div>
+  <div class="form-group">
+    <label>Tagline</label>
+    <input
+      class="form-control"
+      name="tagline"
+      [(ngModel)]="restaurant.tagline"
+      required
+      type="text"
+    />
+  </div>
+</form>
+<hr />
+<div *ngIf="restaurant.menuItems.length">
+  <span>Menu Items</span>
+  <div class="d-flex">
+    <app-menu-item
+      *ngFor="let item of restaurant.menuItems"
+      [menuItem]="item"
+    ></app-menu-item>
+  </div>
+</div>
+<form #menuItemForm="ngForm" *ngIf="isAddingMenuItem">
+  <div class="form-group">
+    <label>Name</label>
+    <input
+      class="form-control"
+      [(ngModel)]="tempMenuItem.name"
+      required
+      name="name"
+      type="text"
+    />
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input
+      class="form-control"
+      name="price"
+      [(ngModel)]="tempMenuItem.price"
+      required
+      type="number"
+    />
+  </div>
+  <div class="form-group">
+    <label>Category</label>
+    <select
+      class="form-control"
+      name="category"
+      [(ngModel)]="tempMenuItem.category"
+      required
+    >
+      <option value="veg">Veg</option>
+      <option value="non-veg">Non-Veg</option>
+      <option value="vegan">Vegan</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Image Url</label>
+    <input
+      class="form-control"
+      name="imageUrl"
+      [(ngModel)]="tempMenuItem.imageUrl"
+      required
+      type="text"
+    />
+  </div>
+</form>
+<div class="d-flex">
+  <button
+    *ngIf="!isAddingMenuItem"
+    (click)="onAddMenuItem()"
+    class="btn btn-primary"
+  >
+    + Add Menu Item
+  </button>
+  <button
+    *ngIf="isAddingMenuItem"
+    (click)="onCancelAdding()"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+  <button
+    *ngIf="isAddingMenuItem"
+    (click)="onSaveMenuItem()"
+    class="btn btn-success"
+  >
+    Save Item
+  </button>
+</div>
